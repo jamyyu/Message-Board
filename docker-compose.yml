@@ -1,0 +1,23 @@
+services:
+  web:
+    build: .
+    command: npm start
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      bucketName: ${BUCKET_NAME}
+      bucketRegion: ${BUCKET_REGION}
+      accessKey: ${ACCESS_KEY}
+      secretAccessKey: ${SECRET_ACCESS_KEY}
+      dbUser:  ${DB_USER}
+      dbPassword: ${DB_PASSWORD}
+    networks:
+      - app
+
+
+
+
+networks:
+  app:

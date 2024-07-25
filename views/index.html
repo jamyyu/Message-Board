@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圖文留言板</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/js/index.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>發表一篇圖文</h1>
+    <form action="/api/posts" method="post" enctype="multipart/form-data" id="uploadForm">
+        <div class="form-group">
+            <label for="textContent">文字內容</label>
+            <input type="text" name="text" id="textContent" required>
+        </div>
+        <div class="form-group">
+            <label for="imageUpload">圖片檔案</label>
+            <input type="file" name="image" id="imageUpload" accept="image/*" required>
+        </div>
+        <button type="submit" id="submitButton">送出</button>
+    </form>
+  <div class="board"></div>
+</body>
+</html>
