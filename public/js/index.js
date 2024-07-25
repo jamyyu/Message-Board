@@ -102,14 +102,6 @@ function renderCard(text, imageUrl) {
   card.appendChild(cardBody);
   cardContainer.appendChild(card);
   container.appendChild(cardContainer);
-
-  // 新的插入第一個
-  if (container.firstChild) {
-    container.insertBefore(cardContainer, container.firstChild);
-  } else {
-    container.appendChild(cardContainer);
-  }
-  console.log('Card rendered:', { text, imageUrl });
 }
 
 async function fetchNewPosts() {
@@ -128,7 +120,7 @@ async function fetchNewPosts() {
       const { id, message, image_name, created_at, image_url} = post;
       if (!displayedPostIds.has(id)) {
         console.log(message, image_url);
-        renderCard(message, image_url);
+        renderNewCard(message, image_url);
         displayedPostIds.add(id); // 添加新顯示的留言ID
       }
     });
@@ -141,4 +133,40 @@ async function fetchNewPosts() {
   } catch (error) {
     console.error('Error:', error);
   }
+}
+
+
+function renderNewCard(text, imageUrl) {
+  const container = document.querySelector('.board')
+
+  const cardContainer = document.createElement('div');
+  cardContainer.classList.add('card-container');
+
+  const card = document.createElement('div');
+  card.classList.add('card');
+
+  const img = document.createElement('img');
+  img.src = imageUrl;
+  img.alt = 'img';
+
+  const cardBody = document.createElement('div');
+  cardBody.classList.add('card-body');
+
+  const cardTitle = document.createElement('h5');
+  cardTitle.classList.add('card-title');
+  cardTitle.textContent = text;
+
+  card.appendChild(img);
+  cardBody.appendChild(cardTitle);
+  card.appendChild(cardBody);
+  cardContainer.appendChild(card);
+  container.appendChild(cardContainer);
+
+  // 新的插入第一個
+  if (container.firstChild) {
+    container.insertBefore(cardContainer, container.firstChild);
+  } else {
+    container.appendChild(cardContainer);
+  }
+  console.log('Card rendered:', { text, imageUrl });
 }
