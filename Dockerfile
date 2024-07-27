@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:16
 
 # 安裝系統依賴項
 RUN apt-get update && apt-get install -y \
