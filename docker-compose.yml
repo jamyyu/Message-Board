@@ -6,13 +6,8 @@ services:
       - .:/app
     ports:
       - "3000:3000"
-    environment:
-      bucketName: ${BUCKET_NAME}
-      bucketRegion: ${BUCKET_REGION}
-      accessKey: ${ACCESS_KEY}
-      secretAccessKey: ${SECRET_ACCESS_KEY}
-      dbUser:  ${DB_USER}
-      dbPassword: ${DB_PASSWORD}
+    env_file:
+      - .env
     networks:
       - webnet
   
@@ -24,6 +19,15 @@ services:
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/ssl:/etc/nginx/ssl
+    networks:
+      - webnet
+  
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./nginx/ssl:/etc/letsencrypt
+      - ./nginx/conf.d:/var/www/certbot
+    entrypoint: /bin/sh -c "trap exit TERM; while :; do certbot renew --webroot -w /var/www/certbot -n --post-hook 'nginx -s reload'; sleep 12h; done"
     networks:
       - webnet
 
