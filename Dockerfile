@@ -11,11 +11,9 @@ WORKDIR /app
 # 複製 package.json 和 package-lock.json 到工作目錄
 COPY package*.json ./
 
-# 設定環境變數以確保 sharp 從原始碼編譯
+# 設定環境變數以確保 sharp 從原始碼編譯，並安裝所有依賴項
 ENV SHARP_IGNORE_GLOBAL_LIBVIPS=1
-RUN npm install --build-from-source=sharp
-
-RUN npm install
+RUN npm install --include=optional
 
 COPY . .
 
