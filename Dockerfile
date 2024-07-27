@@ -12,8 +12,10 @@ WORKDIR /app
 # 複製 package.json 和 package-lock.json 到工作目錄
 COPY package*.json ./
 
-RUN npm install --ignore-scripts=false --foreground-scripts --verbose sharp@0.32.6 \
+RUN npm install \
+  npm install --ignore-scripts=false --foreground-scripts --verbose sharp@0.32.6 \
   npm install --platform=linux --arch=x64 sharp@0.32.6 
+
 
 
 COPY . .
