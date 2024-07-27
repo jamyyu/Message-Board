@@ -21,4 +21,4 @@ app.use('/', indexRouter);
 app.use(get404Page);
 
 const server = http.createServer(app);
-server.listen(3000, '127.0.0.1', () => {console.log('Server is running on port 3000')});
+server.listen(3000, () => {console.log('Server is running on port 3000')});
