@@ -1,6 +1,7 @@
 services:
-  web:
+  app:
     build: .
+    container_name: app
     command: npm start
     volumes:
       - .:/app
@@ -13,11 +14,12 @@ services:
   
   nginx:
     image: nginx:latest
+    container_name: nginx
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - ./nginx/ssl:/etc/nginx/ssl
     networks:
       - webnet
