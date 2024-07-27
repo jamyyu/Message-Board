@@ -36,7 +36,7 @@ const randomImageName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex'
 // 上傳文件到 S3 (file傳入的是req.file)
 export const uploadFileToS3 = async (file) => {
   //調整圖片大小
-  const buffer = await sharp(file.buffer).resize({height:null, width:200,fit:'contain'}).toBuffer();
+  //const buffer = await sharp(file.buffer).resize({height:null, width:200,fit:'contain'}).toBuffer();
   //const buffer = await resizeImage(file.buffer);
 
   const key = randomImageName();
