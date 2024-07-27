@@ -3,7 +3,7 @@ import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3
 //import { resizeImage } from './resizeImg.js';
 import dotenv from 'dotenv';
 import crypto from 'crypto';
-import sharp from 'sharp';
+//import sharp from 'sharp';
 
 dotenv.config();
 

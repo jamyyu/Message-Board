@@ -5,6 +5,7 @@ services:
     command: npm start
     volumes:
       - .:/app
+      - /app/node_modules
     ports:
       - "3000:3000"
     env_file:
