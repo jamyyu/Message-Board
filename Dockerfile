@@ -12,9 +12,6 @@ WORKDIR /app
 # 複製 package.json 和 package-lock.json 到工作目錄
 COPY package*.json ./
 
-# 安裝所有依賴項並強制從原始碼編譯 sharp
-RUN npm install --include=optional sharp --build-from-source --target_platform=linux --target_arch=x64
-
 COPY . .
 
 EXPOSE 3000
