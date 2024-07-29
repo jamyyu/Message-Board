@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 
 app.get('/loaderio-0732dad85051c161a7da261f27629a2b.txt', (req, res) => {
-  res.sendFile(path.join(__dirname, '../', 'loaderio-0732dad85051c161a7da261f27629a2b.txt'));
+  res.sendFile(path.join(__dirname, './', 'loaderio-0732dad85051c161a7da261f27629a2b.txt'));
 });
 
 app.use(get404Page);
