@@ -18,11 +18,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 
-app.use(get404Page);
-
 app.get('/loaderio-0732dad85051c161a7da261f27629a2b.txt', (req, res) => {
-  res.sendFile(path.join(__dirname, './', 'loaderio-0732dad85051c161a7da261f27629a2b.txt'));
+  res.sendFile(path.join(__dirname, '../', 'loaderio-0732dad85051c161a7da261f27629a2b.txt'));
 });
+
+app.use(get404Page);
 
 const server = http.createServer(app);
 server.listen(3000, () => {console.log('Server is running on port 3000')});
